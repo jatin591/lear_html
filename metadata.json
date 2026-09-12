@@ -1,0 +1,6 @@
+{
+  "name": "Learn HTML",
+  "description": "Interactive HTML lessons, live code playground, tag visualizer, and step-by-step challenges.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
