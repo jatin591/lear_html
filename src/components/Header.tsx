@@ -1,5 +1,13 @@
 import { useState } from 'react';
-import { BookOpen, Terminal, Library, CheckCircle2, RotateCcw } from 'lucide-react';
+import {
+  BookOpen,
+  Cpu,
+  Wrench,
+  Terminal,
+  Library,
+  CheckCircle2,
+  RotateCcw,
+} from 'lucide-react';
 import { AppMode } from '../types';
 
 interface HeaderProps {
@@ -35,21 +43,21 @@ export function Header({
                 Learn HTML
               </h1>
               <span className="rounded-full border border-stone-200 bg-stone-50 px-2 py-0.5 text-[10px] font-semibold text-stone-600 uppercase tracking-wider">
-                Beginner to Pro
+                Interactive Studio
               </span>
             </div>
             <p className="hidden text-xs text-stone-500 sm:block">
-              Interactive Web Development Academy
+              DOM Trees • Engine Logic • Accessibility • Challenges
             </p>
           </div>
         </div>
 
         {/* Navigation Tabs */}
-        <nav className="flex items-center gap-1 rounded-lg border border-stone-200 bg-stone-100 p-1 text-xs">
+        <nav className="flex items-center gap-1 rounded-lg border border-stone-200 bg-stone-100 p-1 text-xs overflow-x-auto">
           <button
             type="button"
             onClick={() => onSelectMode('lessons')}
-            className={`flex cursor-pointer items-center gap-1.5 rounded-md px-3 py-1.5 font-medium transition-all ${
+            className={`flex cursor-pointer items-center gap-1.5 rounded-md px-2.5 py-1.5 font-medium transition-all ${
               currentMode === 'lessons'
                 ? 'bg-white text-stone-900 shadow-xs'
                 : 'text-stone-600 hover:text-stone-900'
@@ -61,8 +69,36 @@ export function Header({
 
           <button
             type="button"
+            onClick={() => onSelectMode('labs')}
+            className={`flex cursor-pointer items-center gap-1.5 rounded-md px-2.5 py-1.5 font-medium transition-all ${
+              currentMode === 'labs'
+                ? 'bg-white text-stone-900 shadow-xs'
+                : 'text-stone-600 hover:text-stone-900'
+            }`}
+          >
+            <Cpu className="h-3.5 w-3.5 text-purple-600" />
+            <span className="hidden sm:inline">Engine Labs</span>
+            <span className="sm:hidden">Labs</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => onSelectMode('debugger')}
+            className={`flex cursor-pointer items-center gap-1.5 rounded-md px-2.5 py-1.5 font-medium transition-all ${
+              currentMode === 'debugger'
+                ? 'bg-white text-stone-900 shadow-xs'
+                : 'text-stone-600 hover:text-stone-900'
+            }`}
+          >
+            <Wrench className="h-3.5 w-3.5 text-rose-600" />
+            <span className="hidden sm:inline">Debugger</span>
+            <span className="sm:hidden">Debug</span>
+          </button>
+
+          <button
+            type="button"
             onClick={() => onSelectMode('playground')}
-            className={`flex cursor-pointer items-center gap-1.5 rounded-md px-3 py-1.5 font-medium transition-all ${
+            className={`flex cursor-pointer items-center gap-1.5 rounded-md px-2.5 py-1.5 font-medium transition-all ${
               currentMode === 'playground'
                 ? 'bg-white text-stone-900 shadow-xs'
                 : 'text-stone-600 hover:text-stone-900'
@@ -75,21 +111,21 @@ export function Header({
           <button
             type="button"
             onClick={() => onSelectMode('cheatsheet')}
-            className={`flex cursor-pointer items-center gap-1.5 rounded-md px-3 py-1.5 font-medium transition-all ${
+            className={`flex cursor-pointer items-center gap-1.5 rounded-md px-2.5 py-1.5 font-medium transition-all ${
               currentMode === 'cheatsheet'
                 ? 'bg-white text-stone-900 shadow-xs'
                 : 'text-stone-600 hover:text-stone-900'
             }`}
           >
-            <Library className="h-3.5 w-3.5 text-purple-600" />
-            <span className="hidden sm:inline">Cheat Sheet</span>
-            <span className="sm:hidden">Tags</span>
+            <Library className="h-3.5 w-3.5 text-indigo-600" />
+            <span className="hidden md:inline">Cheat Sheet</span>
+            <span className="md:hidden">Tags</span>
           </button>
 
           <button
             type="button"
             onClick={() => onSelectMode('quiz')}
-            className={`flex cursor-pointer items-center gap-1.5 rounded-md px-3 py-1.5 font-medium transition-all ${
+            className={`flex cursor-pointer items-center gap-1.5 rounded-md px-2.5 py-1.5 font-medium transition-all ${
               currentMode === 'quiz'
                 ? 'bg-white text-stone-900 shadow-xs'
                 : 'text-stone-600 hover:text-stone-900'
@@ -99,6 +135,7 @@ export function Header({
             <span>Quiz</span>
           </button>
         </nav>
+
 
         {/* Progress & Reset Option */}
         <div className="flex items-center gap-3">

@@ -9,6 +9,8 @@ import { LessonView } from './components/LessonView';
 import { PlaygroundView } from './components/PlaygroundView';
 import { CheatSheetView } from './components/CheatSheetView';
 import { QuizView } from './components/QuizView';
+import { DeepLogicLab } from './components/DeepLogicLab';
+import { DebuggerView } from './components/DebuggerView';
 
 export default function App() {
   const [mode, setMode] = useState<AppMode>('lessons');
@@ -44,6 +46,7 @@ export default function App() {
     setActiveLessonId(1);
     localStorage.removeItem('html_completed_lessons');
     localStorage.removeItem('html_active_lesson_id');
+    localStorage.removeItem('html_solved_debugger_puzzles');
   };
 
   const handleGoToPlaygroundWithCode = (snippet: string) => {
@@ -81,6 +84,10 @@ export default function App() {
           />
         )}
 
+        {mode === 'labs' && <DeepLogicLab />}
+
+        {mode === 'debugger' && <DebuggerView />}
+
         {mode === 'playground' && (
           <PlaygroundView
             initialCode={playgroundInitialCode}
@@ -108,25 +115,41 @@ export default function App() {
             <button
               type="button"
               onClick={() => setMode('lessons')}
-              className="hover:text-stone-900"
+              className="hover:text-stone-900 cursor-pointer"
             >
-              10 Core Lessons
+              Lessons
+            </button>
+            <span>•</span>
+            <button
+              type="button"
+              onClick={() => setMode('labs')}
+              className="hover:text-stone-900 cursor-pointer"
+            >
+              Engine Labs
+            </button>
+            <span>•</span>
+            <button
+              type="button"
+              onClick={() => setMode('debugger')}
+              className="hover:text-stone-900 cursor-pointer"
+            >
+              Debugger
             </button>
             <span>•</span>
             <button
               type="button"
               onClick={() => setMode('cheatsheet')}
-              className="hover:text-stone-900"
+              className="hover:text-stone-900 cursor-pointer"
             >
-              Tag Reference
+              Cheat Sheet
             </button>
             <span>•</span>
             <button
               type="button"
               onClick={() => setMode('quiz')}
-              className="hover:text-stone-900"
+              className="hover:text-stone-900 cursor-pointer"
             >
-              Self Assessment
+              Quiz
             </button>
           </div>
         </div>

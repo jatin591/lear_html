@@ -1,4 +1,4 @@
-export type AppMode = 'lessons' | 'playground' | 'cheatsheet' | 'quiz';
+export type AppMode = 'lessons' | 'labs' | 'debugger' | 'playground' | 'cheatsheet' | 'quiz';
 
 export interface TestRule {
   id: string;
@@ -51,3 +51,24 @@ export interface PlaygroundTemplate {
   category: string;
   code: string;
 }
+
+export interface DebuggerPuzzle {
+  id: string;
+  title: string;
+  difficulty: 'Beginner' | 'Intermediate' | 'Advanced';
+  category: string;
+  description: string;
+  brokenCode: string;
+  solutionCode: string;
+  expectedFixHint: string;
+  validate: (html: string) => { passed: boolean; message: string };
+  deepConcept: string;
+}
+
+export interface AuditIssue {
+  type: 'error' | 'warning' | 'info';
+  rule: string;
+  message: string;
+  fix: string;
+}
+
